@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> WMS3D - Warehouse Management System 3D </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <!--------------------- FINESTRA (modale) CREAZIONE MAGAZZINO --------------------->
+        <div class="modalOverlay" id="setupWhs">
+            <div class="modalContent">
+                <h1>Benvenuto in WMS3D!</h1>
+                <p>Inserire le misure del magazzino da creare:</p>
+                <form id="WhsSetupForm">  <!-- da aggiungere range possibili-->
+                    <div class="form_group">
+                        <label for="WhsWidth">Larghezza (mt): </label>
+                        <input type="number" id="WhsWidth" step="0.01" min="0.01">
+                    </div>
+                    <div class="form_group">
+                        <label for="WhsDepth">Profondità (mt): </label>
+                        <input type="number" id="WhsDepth" step="0.01" min="0.01">
+                    </div>
+                    <div class="form_group">
+                        <label for="WhsHeight">Altezza (mt): </label>
+                        <input type="number" id="WhsHeight" step="0.01" min="0.01">
+                    </div>
+                    <div class="form_group">
+                        <input type="submit" id="createWhs" value="Crea">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="module" src = "warehouse_setup.js"></script>
+        
+        <!--------------------- FINESTRA (modale) AGGIUNTA SCAFFALATURA --------------------->
+        <div class="modalOverlay" id="addShelf">
+            <div class="modalContent">
+                <h1>Aggiungi una scaffalatura</h1>
+                <p>Inserire i dati della scaffalatura da creare:</p>
+                <form id="shelfSetupForm">  <!-- da aggiungere range possibili-->
+                    <!--<div class="form_group">
+                        <label for="nShelfUnit">Numero di ripiani: </label>
+                        <input type="number" id="nShelfUnit" min="1">
+                    </div>-->
+                    <div class="form_group">
+                        <label for="shelfId">Codice: </label>
+                        <input type="text" id="shelfId">
+                    </div>
+                    <div class="form_group">
+                        <label for="binSize">Grandezza bin (mt): </label>
+                        <input type="number" id="binSize" step="0.01" min="0.01">
+                    </div>
+                    <div class="form_group">
+                        <label for="shelfWidth">Larghezza (bin): </label>
+                        <input type="number" id="shelfWidth" step="1" min="1">
+                    </div>
+                    <div class="form_group">
+                        <label for="shelfHeight">Altezza (bin): </label>
+                        <input type="number" id="shelfHeight" step="1" min="1">
+                    </div>
+                    <div class="form_group">
+                        <button type="button" class="closeBtn" id="closeShelfSetup">Annulla</button>
+                        <input type="submit" id="submitShelf" value="Aggiungi">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="module" src = "shelf_setup.js"></script>
+
+        <!--------------------- FINESTRA (modale) AGGIUNTA PRODOTTO --------------------->
+        <div class="modalOverlay" id="addProduct">
+            <div class="modalContent">
+                <h1>Aggiungi un prodotto</h1>
+                <p>Inserire il nome e le misure del prodotto da creare:</p>
+                <form id="prodSetupForm">  <!-- da aggiungere range possibili-->
+                    <div class="form_group">
+                        <label for="prodName">Nome: </label>
+                        <input type="text" id="prodName">
+                    </div>
+                    <!--<div class="form_group">
+                        <label for="prodWidth">Larghezza (mt): </label>
+                        <input type="number" id="prodWidth" step="0.01" min="0.01">
+                    </div>
+                    <div class="form_group">
+                        <label for="prodDepth">Profondità (mt): </label>
+                        <input type="number" id="prodDepth" step="0.01" min="0.01">
+                    </div>
+                    <div class="form_group">
+                        <label for="prodHeight">Altezza (mt): </label>
+                        <input type="number" id="prodHeight" step="0.01" min="0.01">
+                    </div>-->
+                    <div class="form_group">
+                        <button type="button" class="closeBtn" id="closeProdSetup">Annulla</button>
+                        <input type="submit" id="submitProd" value="Aggiungi">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="module" src = "product_setup.js"></script>
+
+        <!--------------------- FINESTRA (modale) RICHIESTA MOVIMENTAZIONE --------------------->
+        <div class="modalOverlay" id="requestMove">
+            <div class="modalContent">
+                <h1>Richiesta di movimentazione</h1>
+                <p>Seleziona il prodotto da spostare e la destinazione</p>
+                <form id="moveRequestForm" autocomplete="off">
+                    <div class="form_group">  <!--da aggiungere possibilità di selezionare dal modello 3d-->
+                        <label for="product">Prodotto da spostare: </label>
+                        <input list="products" name="product" id="product" placeholder="Inserisci un prodotto">
+                        <datalist id="products"></datalist>
+                    </div>
+                    <div class="form_group">
+                        <label for="shelf">Destinazione: </label>
+                        <input list="shelves" name="shelf" id="shelf" placeholder="Inserisci un shelves">
+                        <datalist id="shelves"></datalist>
+                    </div>
+                    <div class="form_group">
+                        <label for="posx">Posizione x: </label>
+                        <input type="number" name="posx" id="posx" placeholder="x">
+                    </div>
+                    <div class="form_group">
+                        <label for="posy">Posizione y: </label>
+                        <input type="number" name="posy" id="posy" placeholder="y">
+                    </div>
+                    <div class="form_group">
+                        <button type="button" class="closeBtn" id="closeMoveReq">Annulla</button>
+                        <input type="submit" id="submitMoveRequest" value="Invia richiesta">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="module" src = "movement.js"></script>
+
+        <!--------------------- FINESTRA DI BACKLOG DEGLI SPOSTAMENTI --------------------->
+        <div class="modalOverlay" id="movementDetails">
+            <div class="modalContent">
+                <h1>Dettagli Movimento</h1>
+                <p id="movementInfo"></p>
+                <button type="button" class="closeBtn" id="closeMovementDetails">Chiudi</button>
+            </div>
+        </div>
+
+        <!--------------------- FINESTRA PAGINA PRINCIAPALE --------------------->
+        <!-- barra superiore con tutti i comandi -->
+        <div class="topbar">
+            <!-- comandi relativi alla parte grafica del wms -->
+            <div id="guiBtns">
+                <!--
+                <button class = "btnWithIcon" title = "Ingrandisci" id="zoomInBtn">
+                    <img src="assets/icons/zoomInIcon.png">
+                </button>
+                <button class = "btnWithIcon" title = "Rimpicciolisci" id="zoomOutBtn">
+                    <img src="assets/icons/zoomOuticon.png">
+                </button>
+                <button class = "btnWithIcon" title = "Ruota v/sinistra" id="rotateSxBtn">
+                    <img src="assets/icons/rotateSxIcon.png">
+                </button>
+                <button class = "btnWithIcon" title = "Ruota v/destra" id="rotateDxBtn">
+                    <img src="assets/icons/rotateDxIcon.png">
+                </button>
+                <button class = "btnWithIcon" title = "Reset vista" id="resetViewBtn">
+                    <img src="assets/icons/resetIcon.png">
+                </button>
+                -->
+                <!-- da aggiungere anche ruota in su/giù (?)-->
+            </div>
+            <!-- comandi relativi alla gestione del wms -->
+            <div id="wmsBtns">  <!--da cambiare icone perchè servirebbe attribuzione x copyright(?)-->
+                <button class = "btnWithIcon" title = "Aggiungi scaffalatura" id="addShelfBtn">
+                    <img src="assets/icons/addShelfIcon.png">
+                </button>
+                <button class = "btnWithIcon" title = "Aggiungi prodotto" id="addProductBtn">
+                    <img src="assets/icons/addProductIcon.png">
+                </button>
+                <div class="dropdown" id="requestDropdown">
+                    <button class = "btnWithIcon" title = "Richiedi movimentazione" id="askMoveBtn">
+                        <img src="assets/icons/movementIcon.png">
+                    </button>
+                    <div class="dropdown-content">
+                        <button id="newMoveRequest">Richiedi nuovo spostamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!--contenitore parte 3d-->
+            <div id="wms"></div>
+            <script type="module" src="main.js"></script>
+            
+            <!--sidebar con scaffalature e prodotti-->
+            <div id="lib">
+                <div class="side_content" id="shelves">
+                    <h2>Scaffalature</h2>
+                    <ul id="shelfLib"></ul>
+                </div>
+        
+                <div class="side_content" id="products">
+                    <h2>Prodotti</h2>
+                    <ul id="productLib"></ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,185 @@
+:root {
+    --darkest: #1e1e1e;     /*colore per staccare valori extra*/
+    --dark: #252526;        /*colore principale di background*/
+    --light: #404040;       /*colore secondario per selezione etc.*/
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: sans-serif;
+}
+
+/* Stile per finestra modale*/
+.modalOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContent {
+    background-color: var(--dark);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.form_group {
+    padding: 0.5em;
+}
+
+.form_group input[type="submit"] {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-radius: 5px;
+    margin-left: 1em;
+    border: 2px solid #ffcc00;
+    color: #ffcc00;
+    background-color: var(--dark);
+}
+
+.form_group input[type="submit"]:hover {
+    background-color: #ffcc00;
+    color: var(--dark);
+}
+
+.form_group .closeBtn {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-right: 1em;
+    border-radius: 5px;
+    border: 2px solid --light;
+    color: #fff;
+    background-color: var(--dark);
+}
+
+.closeBtn:hover {
+    background-color: var(--light);
+    color: #fff;
+}
+
+/* stile per pagina principale*/
+/* barra dei comandi superiore*/
+.topbar {
+    background-color: var(--dark);
+    border-bottom: 1px solid var(--light);
+    display: flex;
+    justify-content: space-between;
+}
+
+.topbar button {
+    border: none;
+    background-color: var(--dark);
+    padding: 1em;
+}
+
+.topbar button:hover {
+    background-color: var(--light);
+}
+
+.btnWithIcon img {
+    width: 2em;
+    height: 2em;
+}
+
+#guiBtns {
+    align-items: left;
+    display: flex;
+}
+
+#wmsBtns {
+    align-items: right;
+    display: flex;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--darkest);
+    border: 1px solid var(--light);
+    min-width: 160px;
+    right: 0;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1em 1em;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--light);
+}
+
+.dropdown:hover .dropdown-content {       /*mostra il menu dropdown quando hover su div del bottone di dropdown*/
+    display: block;
+}
+
+.dropdown-content #newMoveRequest {
+    margin: 1em;
+    border-radius: 5px;
+    border: 2px solid #ffcc00;
+    color: #ffcc00;
+}
+
+.dropdown-content #newMoveRequest:hover {
+    background-color: #ffcc00;
+    color: var(--dark);
+}
+
+/* parte visualizzazione 3d + sidebar */
+.container {
+    height: 100%;
+    display: flex;
+}
+
+#wms {
+    width: 80%;
+    background-color: var(--light);
+    overflow: auto; /*per scroll in caso di overflow della scena*/
+}
+
+#lib {
+    background-color: var(--dark);
+    padding: 1em;
+    width: 20%;
+}
+
+#shelfLib, #productLib {
+    list-style-type: none;
+    padding: 0;
+    padding-left: 1.5em;   
+}
+
+#shelfLib li, #prdouctLib li {
+    display: flex;
+    align-items: center;
+}
+
+#shelfEditButton, #shelfDeleteButton, #objectMoveButton, #objectDeleteButton {
+    background-color:transparent;
+	border-radius:10px;
+	border:2px solid #ffffff;
+	cursor:pointer;
+	color:#ffffff;
+	padding: 0.5em;
+}
+
+#shelfEditButton, #objectMoveButton{
+    margin-left: 5em;
+}
